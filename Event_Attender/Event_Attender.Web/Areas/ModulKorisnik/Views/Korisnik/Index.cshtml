@@ -1,0 +1,83 @@
+﻿
+@{
+   
+}
+@using Event_Attender.Data.Models;
+@model Event_Attender.Web.Areas.ModulKorisnik.Models.PretragaEventaVM
+
+
+<style>
+    .col-sm-4 {
+        margin-top: 1%;
+        margin-bottom: 1%;
+        padding-left: 0%;
+        padding-right: 0%;
+    }
+
+    #opcijeDiv {
+        margin-bottom: 2%;
+    }
+
+    #linkEvent {
+        color: black;
+    }
+
+        #linkEvent:hover {
+            color:#e61c41;
+            text-decoration: none;
+        }
+
+    #izbornik {
+        display: inline;
+        float: right;
+       
+    }
+
+   
+</style>
+
+<div id="opcijeDiv">
+    <form class="form-inline" style="display:inline">
+        <input name="filter" type="text" placeholder="Pretrazite po nazivu ili lokaciji..." class="form-control" size="30" />
+        <input type="submit" class="btn btn-light" value="Traži" />
+    </form>
+    <div id="izbornik">
+        <a asp-area="ModulKorisnik" asp-controller="Korisnik" asp-action="Index" class="btn btn-light">Sve </a>
+        <a asp-area="ModulKorisnik" asp-controller="Korisnik" asp-action="Index" asp-route-filter="Muzika" class="btn btn-light">Muzika </a>
+        <a asp-area="ModulKorisnik" asp-controller="Korisnik" asp-action="Index" asp-route-filter="Kultura" class="btn btn-light">Kultura</a>
+        <a asp-area="ModulKorisnik" asp-controller="Korisnik" asp-action="Index" asp-route-filter="Sport" class="btn btn-light">Sport </a>
+        <a asp-area="ModulKorisnik" asp-controller="PosjeceniEventi" asp-action="Index" class="btn btn-light">Posjećeni eventi</a>
+    </div>
+</div>
+
+<div id="glavniDiv" class="row text-center">
+
+    @foreach (var e in Model.Eventi)
+    {
+        <div class="col-sm-4">
+            <div id="unutrasnji" class="thumbnail">
+                @if (e.Slika == null)
+                {                                                      
+                     <img src="~/images/items/events.jpg"  width="350" height="250">
+                }
+                else
+                {
+                <img src="~/images/items/@e.Slika"  width="350" height="250"> 
+                }
+                <p> <a id="linkEvent" asp-area="ModulKorisnik" asp-controller="Korisnik" asp-action="OEventu" asp-route-eId="@e.EventId" asp-route-korId="@Model.KorisnikId"><strong>@e.Naziv</strong></a></p>
+                <p>
+                    @e.ProstorOdrzavanjaGrad
+
+                    <br />
+                    @e.DatumOdrzavanja
+                    - @e.VrijemeOdrzavanja h
+
+                </p>
+
+                <br /><br />
+            </div>
+        </div>
+    }
+
+</div>
+

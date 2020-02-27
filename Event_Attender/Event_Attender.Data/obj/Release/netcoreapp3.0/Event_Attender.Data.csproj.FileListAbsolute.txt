@@ -1,0 +1,10 @@
+C:\Users\Azra\source\repos\webapp\Event_Attender\Event_Attender.Data\bin\Release\netcoreapp3.0\Event_Attender.Data.deps.json
+C:\Users\Azra\source\repos\webapp\Event_Attender\Event_Attender.Data\bin\Release\netcoreapp3.0\Event_Attender.Data.runtimeconfig.json
+C:\Users\Azra\source\repos\webapp\Event_Attender\Event_Attender.Data\bin\Release\netcoreapp3.0\Event_Attender.Data.runtimeconfig.dev.json
+C:\Users\Azra\source\repos\webapp\Event_Attender\Event_Attender.Data\bin\Release\netcoreapp3.0\Event_Attender.Data.dll
+C:\Users\Azra\source\repos\webapp\Event_Attender\Event_Attender.Data\bin\Release\netcoreapp3.0\Event_Attender.Data.pdb
+C:\Users\Azra\source\repos\webapp\Event_Attender\Event_Attender.Data\obj\Release\netcoreapp3.0\Event_Attender.Data.csprojAssemblyReference.cache
+C:\Users\Azra\source\repos\webapp\Event_Attender\Event_Attender.Data\obj\Release\netcoreapp3.0\Event_Attender.Data.AssemblyInfoInputs.cache
+C:\Users\Azra\source\repos\webapp\Event_Attender\Event_Attender.Data\obj\Release\netcoreapp3.0\Event_Attender.Data.AssemblyInfo.cs
+C:\Users\Azra\source\repos\webapp\Event_Attender\Event_Attender.Data\obj\Release\netcoreapp3.0\Event_Attender.Data.dll
+C:\Users\Azra\source\repos\webapp\Event_Attender\Event_Attender.Data\obj\Release\netcoreapp3.0\Event_Attender.Data.pdb

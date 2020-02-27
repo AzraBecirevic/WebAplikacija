@@ -1,0 +1,155 @@
+﻿
+@{
+    ViewData["Title"] = "OEventu";
+}
+
+@model Event_Attender.Web.Areas.ModulKorisnik.Models.EventKorisnikVM
+
+<style>
+
+    #manja, #veca {
+        width: 100%; 
+    }
+    #manja{
+        height:250px;
+    }
+   
+    tr {
+        border: solid 5px white;
+    }
+
+    td {
+        width: 50%;
+    }
+
+    #prviTd {
+        width: 50%;
+    }
+
+    #drugiTd {
+        width: 50%;
+        padding-top:0%;
+        padding-bottom:0%;
+    }
+
+    #likeTd {
+        text-align: center;
+        background-color: #268c59; 
+        height:250px;   /*kao velicina slike*/
+        text-align:center;
+        line-height:250px;
+        
+    }
+
+    #kupiKartuTd {
+        text-align: center;
+        background-color: #58ad67; 
+        height:250px;
+        text-align:center;
+        line-height:250px;
+    }
+
+    #likeTd:hover {
+        background-color: #ace6b7; 
+    }
+
+    #kupiKartuTd:hover {
+        background-color: #ace6b7;
+    }
+
+    a.tdLink {
+        color: white;
+    }
+
+   a.tdLink:hover {
+       text-decoration: none;
+       color: white;
+   }
+   #linkNaziv{
+       color:black;
+   }
+   #linkNaziv:hover{
+        color:forestgreen;
+        text-decoration:none;
+   }
+
+       
+</style>
+<h5><strong> <a id="linkNaziv" href="/ModulKorisnik/Korisnik/OEventu?eId=@Model.EventId&korId=@Model.KorisnikId">@Model.Naziv</a></strong></h5>
+<br />
+<div id="ajaxDiv">
+    <table id="veca">
+        <tr>
+            <td id="prviTd">
+                @if (Model.Slika != null && Model.Slika.Equals(" ")==false)
+                {
+                    <img src="~/images/items/@Model.Slika" width="350" height="250" />
+                }
+                else
+                {
+                    <img src="~/images/items/events.jpg" width="350" height="250" />
+                }
+            </td>
+            <td id="drugiTd">
+
+                <table id="manja">
+                    <tr>
+                        <td>
+                            <div id="likeTd">
+                                @if (Model.IsLikean == false)
+                                {
+                                    <a class="tdLink" href="/ModulKorisnik/Korisnik/LikeEvent?eId=@Model.EventId&korId=@Model.KorisnikId" ajax-poziv="like" ajax-rezultat="likeTd">Like</a>
+                                }
+                                else
+                                {
+                                    <a class="tdLink" href="/ModulKorisnik/Korisnik/DisLikeEvent?eId=@Model.EventId&korId=@Model.KorisnikId" ajax-poziv="dislike"
+                                       ajax-rezultat="likeTd">Dislike</a>
+                                }
+                            </div>
+                        </td>
+                        <td>
+                            <div id="kupiKartuTd">
+                                <a class="tdLink" href="/ModulKorisnik/Korisnik/KupiKartu?eId=@Model.EventId&kId=@Model.KorisnikId" ajax-poziv="karta" ajax-rezultat="ajaxDiv">Kupi kartu</a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+
+        <tr class="bg-light">
+
+            <td id="treciTd" colspan="2">
+
+                <p>Kategorija: @Model.Kategorija</p>
+                <p>Datum: @Model.DatumOdrzavanja u @Model.VrijemeOdrzavanja</p>
+                <p>Grad: @Model.ProstorOdrzavanjaGrad</p>
+                <p>Prostor odrzvanja: @Model.ProstorOdrzavanjaNaziv  - @Model.ProstorOdrzavanjaAdresa</p>
+                @if (@Model.Opis != null)
+                {
+                    <p>O eventu: @Model.Opis</p>
+                }
+            </td>
+        </tr>
+    </table>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/KorisnikAjaxSkripta.js"></script>
+<script>
+    $(document).ready(
+        function () {
+            $("a[ajax-poziv='karta']").click(function (event) {
+                $(this).attr("ajax-poziv", "dodan");
+                event.preventDefault();
+                var urlPoziv = $(this).attr("href");
+                var divRezultat = $(this).attr("ajax-rezultat");
+                $.get(urlPoziv, function (data, status) {
+                    $("#ajaxDiv").html(data);
+                })
+            });
+        });
+</script>
+
